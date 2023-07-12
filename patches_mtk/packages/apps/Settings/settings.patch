@@ -23,7 +23,7 @@ index 3e93d41..a352391 100644
      <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
      <plurals name="show_dev_countdown">
          <item quantity="one">You are now <xliff:g id="step_count">%1$d</xliff:g> step away from being a developer.</item>
-@@ -2355,6 +2357,8 @@
+@@ -2377,6 +2377,8 @@
      <string name="firmware_version">Android version</string>
      <!-- About phone screen, status item label  [CHAR LIMIT=60] -->
      <string name="security_patch">Android security patch level</string>
@@ -36,7 +36,7 @@ diff --git a/res/xml/device_info_settings.xml b/res/xml/device_info_settings.xml
 index f756b26..0f87d0b 100644
 --- a/res/xml/device_info_settings.xml
 +++ b/res/xml/device_info_settings.xml
-@@ -133,6 +133,14 @@
+@@ -137,6 +137,14 @@
                          android:data="https://source.android.com/security/bulletin/" />
          </PreferenceScreen>
  
@@ -55,18 +55,20 @@ diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/
 index 064d62d..16eb2e8 100644
 --- a/src/com/android/settings/DeviceInfoSettings.java
 +++ b/src/com/android/settings/DeviceInfoSettings.java
-@@ -56,7 +56,7 @@ import com.android.internal.util.viper.PackageUtils;
+@@ -53,7 +53,8 @@ import com.android.internal.util.viper.PackageUtils;
  import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
  public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
--
-+               private static final String KEY_AUTHOR_INFO = "author_info";
-     private static final String LOG_TAG = "DeviceInfoSettings";
-     private static final String FILENAME_PROC_CPUINFO = "/proc/cpuinfo";
 
-@@ -160,6 +160,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
-         findPreference(KEY_VIPER_VERSION).setEnabled(true);
++    private static final String KEY_AUTHOR_INFO = "author_info";
+     private static final String LOG_TAG = "DeviceInfoSettings";
+
+     private static final String KEY_MANUAL = "manual";
+@@ -152,8 +152,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+         findPreference(KEY_MOD_VERSION).setEnabled(true);
          setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
+         setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
+         findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
 
 +       String author_info = getResources().getString(R.string.author_info_default);
 +       setStringSummary(KEY_AUTHOR_INFO, author_info);
@@ -74,7 +76,7 @@ index 064d62d..16eb2e8 100644
          if (!SELinux.isSELinuxEnabled()) {
              String status = getResources().getString(R.string.selinux_status_disabled);
              setStringSummary(KEY_SELINUX_STATUS, status);
-@@ -330,6 +333,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+@@ -335,6 +335,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                          + "queryIntentActivities() returns empty" );
                  return true;
              }
@@ -87,7 +89,6 @@ index 064d62d..16eb2e8 100644
 +            }
          } else if (preference.getKey().equals(KEY_DEVICE_FEEDBACK)) {
              sendFeedback();
-         }
+         } else if(preference.getKey().equals(KEY_SYSTEM_UPDATE_SETTINGS)) {
 -- 
 2.7.4
-

@@ -454,7 +454,7 @@ index 2dd1611..b622ee1 100644
      virtual bool isOffloadSupported(const audio_offload_info_t& info)
      {
          Parcel data, reply;
-@@ -1165,6 +1182,17 @@ status_t BnAudioPolicyService::onTransact(
+@@ -1173,6 +1190,17 @@ status_t BnAudioPolicyService::onTransact(
              return status;
          }
  
@@ -471,7 +471,7 @@ index 2dd1611..b622ee1 100644
 +#endif
          case IS_OFFLOAD_SUPPORTED: {
              CHECK_INTERFACE(IAudioPolicyService, data, reply);
-             audio_offload_info_t info;
+             audio_offload_info_t info = {};
 diff --git a/services/audioflinger/AudioFlinger.cpp b/services/audioflinger/AudioFlinger.cpp
 index 9244e5b..233466f 100644
 --- a/services/audioflinger/AudioFlinger.cpp
@@ -893,7 +893,7 @@ index 8c39f78..7fb7911 100644
  //FIXME: workaround for truncated touch sounds
  // to be removed when the problem is handled by system UI
  #define TOUCH_SOUND_FIXED_DELAY_MS 100
-@@ -3406,6 +3426,18 @@ AudioPolicyManager::AudioPolicyManager(AudioPolicyClientInterface *clientInterfa
+@@ -3428,6 +3428,18 @@ AudioPolicyManager::AudioPolicyManager(AudioPolicyClientInterface *clientInterfa
                  if (mPrimaryOutput == 0 &&
                          outProfile->getFlags() & AUDIO_OUTPUT_FLAG_PRIMARY) {
                      mPrimaryOutput = outputDesc;
@@ -912,7 +912,7 @@ index 8c39f78..7fb7911 100644
                  }
                  addOutput(output, outputDesc);
                  setOutputDevice(outputDesc,
-@@ -5069,7 +5101,20 @@ float AudioPolicyManager::computeVolume(audio_stream_type_t stream,
+@@ -5103,7 +5103,20 @@ float AudioPolicyManager::computeVolume(audio_stream_type_t stream,
                                          int index,
                                          audio_devices_t device)
  {
@@ -933,7 +933,7 @@ index 8c39f78..7fb7911 100644
  
      // handle the case of accessibility active while a ringtone is playing: if the ringtone is much
      // louder than the accessibility prompt, the prompt cannot be heard, thus masking the touch
-@@ -5177,7 +5222,17 @@ status_t AudioPolicyManager::checkAndSetVolume(audio_stream_type_t stream,
+@@ -5224,7 +5224,17 @@ status_t AudioPolicyManager::checkAndSetVolume(audio_stream_type_t stream,
          float voiceVolume;
          // Force voice volume to max for bluetooth SCO as volume is managed by the headset
          if (stream == AUDIO_STREAM_VOICE_CALL) {
@@ -951,7 +951,7 @@ index 8c39f78..7fb7911 100644
          } else {
              voiceVolume = 1.0;
          }
-@@ -5636,5 +5691,299 @@ void AudioPolicyManager::updateAudioProfiles(audio_devices_t device,
+@@ -5693,5 +5693,299 @@ void AudioPolicyManager::updateAudioProfiles(audio_devices_t device,
          profiles.addProfileFromHal(new AudioProfile(format, channelMasks, samplingRates));
      }
  }
@@ -1342,7 +1342,7 @@ diff --git a/services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp b/service
 index ed8683c..cfeb973 100644
 --- a/services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp
 +++ b/services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp
-@@ -775,6 +775,20 @@ status_t AudioPolicyService::getMasterMono(bool *mono)
+@@ -777,6 +777,20 @@ status_t AudioPolicyService::getMasterMono(bool *mono)
      Mutex::Autolock _l(mLock);
      return mAudioPolicyManager->getMasterMono(mono);
  }

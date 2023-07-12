@@ -12,7 +12,7 @@ diff --git a/healthd/BatteryMonitor.cpp b/healthd/BatteryMonitor.cpp
 index 6b6676a689..3fa042cd5b 100644
 --- a/healthd/BatteryMonitor.cpp
 +++ b/healthd/BatteryMonitor.cpp
-@@ -229,7 +229,11 @@ bool BatteryMonitor::update(void) {
+@@ -228,7 +228,11 @@ bool BatteryMonitor::update(void) {
      props.batteryLevel = mBatteryFixedCapacity ?
          mBatteryFixedCapacity :
          getIntField(mHealthdConfig->batteryCapacityPath);
@@ -25,4 +25,4 @@ index 6b6676a689..3fa042cd5b 100644
      if (!mHealthdConfig->batteryCurrentNowPath.isEmpty())
          props.batteryCurrent = getIntField(mHealthdConfig->batteryCurrentNowPath) / 1000;
 --
-2.7.4		 
+2.7.4

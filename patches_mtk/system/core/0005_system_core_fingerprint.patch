@@ -18,16 +18,16 @@ index d16e02f..4d5ffce 100644
  /dev/binder               0666   root       root
 +/dev/elan_fp              0666   root       root
 +# add by gaoshan for sunwave_FINGERPRINT start
-+/dev/sunwave_fp              0666   root       root
++/dev/sunwave_fp           0666   root       root
 +
 +# add by microarray xuh
-+/dev/madev0		  0666	 root	    root
++/dev/madev0               0666	  root	      root
 +# add by microarray xuh
 +
 +# add by shuaishuai for fpsensor start
-+/dev/fpsensor              0666   root       root
++/dev/fpsensor             0666   root       root
  
  # Anyone can read the logs, but if they're not in the "logs"
  # group, then they'll only see log entries for their UID.
--- 
+--
 2.7.4

@@ -315,7 +315,7 @@ index c7b5a8415..5a0e56496 100644
  #include "config_write.h"
  #include "log_portability.h"
  #include "logger.h"
-@@ -389,27 +393,36 @@ LIBLOG_ABI_PUBLIC int __android_log_buf_write(int bufID, int prio,
+@@ -393,27 +393,36 @@ LIBLOG_ABI_PUBLIC int __android_log_buf_write(int bufID, int prio,
                                                const char *tag, const char *msg)
  {
      struct iovec vec[3];

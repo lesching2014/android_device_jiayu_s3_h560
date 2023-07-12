@@ -1,0 +1,53 @@
+# mount point	fstype    device    	[device2]
+
+# 03
+/protect_1      	ext4  	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect1  flags=display="Protect_1";backup=1
+# 03
+/protect_1         	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect1  flags=display="Protect_1";backup=1;flashimg=1
+# 04
+/protect_2      	ext4	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect2  flags=display="Protect_2";backup=1
+# 04
+/protect_2      	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect2  flags=display="Protect_2";backup=1;flashimg=1
+# 17
+/system         	ext4	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system    flags=display="System";backup=1
+/vendor         	ext4	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/vendor    flags=display="Vendor";backup=1
+# 18
+/cache          	f2fs	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache     flags=display="Cache";backup=1
+# 18
+/cache          	ext4	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache     flags=display="Cache";backup=1
+# 19
+/data           	f2fs	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata  flags=length=-16384;encryptable=/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata;display="Data";backup=1
+# 19
+/data           	ext4	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata  flags=length=-16384;encryptable=/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata;display="Data";backup=1
+# 01
+/proinfo        	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo   flags=display="Proinfo";backup=1;flashimg=1
+# 02
+/nvram          	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram     flags=display="Nvram";backup=1;flashimg=1
+# 05
+/seccfg         	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/seccfg    flags=display="Seccfg";backup=1;flashimg=1
+# 06
+/lk             	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/lk        flags=display="LK";backup=1;flashimg=1
+# 07
+/boot           	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot      flags=display="Boot";backup=1;flashimg=1
+# 08
+/recovery       	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery  flags=display="Recovery";backup=1;backup=1
+# 09
+/secro          	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/secro     flags=display="Secro";backup=1;flashimg=1
+# 10 /misc
+/para           	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para 	flags=display="Para";backup=1;flashimg=1
+# 11
+/logo           	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo      flags=display="Logo";backup=1;flashimg=1
+# 12
+/expdb          	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/expdb     flags=display="Expdb";backup=1;flashimg=1
+# 13
+/frp            	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp       flags=display="Frp";backup=1;flashimg=1
+# 14
+/tee1           	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/tee1      flags=display="Tee1";backup=1;flashimg=1
+# 15
+/tee2           	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/tee2      flags=display="Tee2";backup=1;flashimg=1
+# 16
+/metadata       	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata
+# 20
+/flashinfo      	emmc	/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/flashinfo
+/external_sd		auto	/dev/block/mmcblk1p1			/dev/block/mmcblk1	flags=display="External SDcard";storage;removable;backup=0
+/usbotg		auto	/dev/block/sda1			/dev/block/sda		flags=display="USB-OTG";storage;removable;backup=0

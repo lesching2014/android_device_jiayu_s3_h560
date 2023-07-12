@@ -22,7 +22,7 @@ diff --git a/core/res/AndroidManifest.xml b/core/res/AndroidManifest.xml
 index ea0e39c..a936983 100644
 --- a/core/res/AndroidManifest.xml
 +++ b/core/res/AndroidManifest.xml
-@@ -1654,6 +1654,13 @@
+@@ -1958,6 +1958,13 @@
          android:description="@string/permdesc_getPackageSize"
          android:protectionLevel="normal" />
  
@@ -37,10 +37,11 @@ index ea0e39c..a936983 100644
           {@link android.content.pm.PackageManager#addPackageToPreferred}
           for details. -->
 diff --git a/core/res/res/values/config.xml b/core/res/res/values/config.xml
-index c7846cf..916d8a5 100644
+old mode 100755
+new mode 100664
 --- a/core/res/res/values/config.xml
 +++ b/core/res/res/values/config.xml
-@@ -1298,6 +1298,8 @@
+@@ -1474,6 +1474,8 @@
      <string-array name="config_locationProviderPackageNames" translatable="false">
          <!-- The standard AOSP fused location provider -->
          <item>com.android.location.fused</item>
@@ -50,10 +51,11 @@ index c7846cf..916d8a5 100644
  
      <!-- This string array can be overriden to enable test location providers initially. -->
 diff --git a/core/res/res/values/strings.xml b/core/res/res/values/strings.xml
-index 58135db..e65367a 100644
+old mode 100755
+new mode 100664
 --- a/core/res/res/values/strings.xml
 +++ b/core/res/res/values/strings.xml
-@@ -616,6 +616,11 @@
+@@ -679,6 +679,11 @@
      <!--  Permissions -->
  
      <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
@@ -65,11 +67,14 @@ index 58135db..e65367a 100644
      <string name="permlab_statusBar">disable or modify status bar</string>
      <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
      <string name="permdesc_statusBar">Allows the app to disable the status bar or add and remove system icons.</string>
+diff --git a/core/res/res/values/symbols.xml b/core/res/res/values/symbols.xml
+old mode 100755
+new mode 100664
 diff --git a/services/core/java/com/android/server/pm/PackageManagerService.java b/services/core/java/com/android/server/pm/PackageManagerService.java
 index 1505cc0..a7b2bbe 100644
 --- a/services/core/java/com/android/server/pm/PackageManagerService.java
 +++ b/services/core/java/com/android/server/pm/PackageManagerService.java
-@@ -3178,8 +3178,31 @@ public class PackageManagerService extends IPackageManager.Stub {
+@@ -3214,8 +3214,31 @@ public class PackageManagerService extends IPackageManager.Stub {
                  ? Collections.<String>emptySet() : permissionsState.getPermissions(userId);
          final PackageUserState state = ps.readUserState(userId);
 
@@ -103,7 +108,5 @@ index 1505cc0..a7b2bbe 100644
      }
 
      @Override
--- 
+--
 2.8.1
-
-

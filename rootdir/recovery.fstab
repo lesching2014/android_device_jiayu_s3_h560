@@ -1,22 +1,34 @@
 # Android fstab file.
+# <src>           <mnt_point>         <type>    <mnt_flags and options>                 <fs_mgr_flags>
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-#<src>          <mnt_point>        <type>       <mnt_flags and options>       <fs_mgr_flags>
-
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot      /boot             emmc         defaults                     defaults
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram        /nvram            emmc         defaults                     defaults
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery     /recovery         emmc         defaults                     defaults
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para     /misc         emmc         defaults                     defaults
-
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system       /system       ext4      ro,noatime          wait
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache      /cache       f2fs    nosuid,nodev,noatime,inline_xattr                           wait,check,formattable
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache       /cache        ext4      noatime,nosuid,nodev,noauto_da_alloc     wait
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata    /data        f2fs    nosuid,nodev,noatime,inline_xattr                           wait,check,resize,encryptable=dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata    /data               ext4      noatime,nosuid,nodev,noauto_da_alloc    wait,check,encryptable=dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect1   /protect_f          ext4      noatime,nosuid,nodev,noauto_da_alloc    wait,check
-dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect2   /protect_s          ext4      noatime,nosuid,nodev,noauto_da_alloc    wait,check
+# 08
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/recovery      /recovery       emmc  defaults	wait,check
+# 07
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/boot          /boot           emmc  defaults	wait,check
+# 17
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system        /system         ext4  ro,lazytime,barrier=0							wait
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/vendor        /vendor         ext4  ro,lazytime,barrier=0							wait
+# 18
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache         /cache          f2fs  rw,lazytime,nosuid,nodev,inline_xattr,nobarrier			wait,check,formattable
+# 18
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/cache         /cache          ext4  lazytime,nosuid,nodev,noauto_da_alloc,discard,barrier=0		wait,check
+# 19
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata      /data           f2fs  rw,lazytime,nosuid,nodev,inline_xattr,nobarrier			wait,check,resize,encryptable=/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata
+# 19
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/userdata      /data           ext4  lazytime,nosuid,nodev,noauto_da_alloc,discard,barrier=0		wait,check,resize,encryptable=/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/metadata
+# 03
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect1      /protect_1      ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc,barrier=1	wait,check
+# 04
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/protect2      /protect_2      ext4  noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc,barrier=1	wait,check
+# 02
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram         /nvram          emmc  defaults	wait,check
+# 10 /misc
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/para          /para           emmc  defaults	defaults
+# 13
+/dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/frp           /frp            emmc  defaults	defaults
 
 # vold-managed volumes
-/devices/platform/mtk-msdc.0/mmc_host/mmc0      auto     auto    defaults voldmanaged=sdcard0:16
-/devices/platform/mtk-msdc.1/mmc_host/mmc1      auto     auto    defaults voldmanaged=sdcard1:auto
+/devices/mtk-msdc.0/11240000.MSDC1*  	                            auto            auto  defaults	voldmanaged=external_sd:auto,encryptable=userdata
+/devices/platform/mt_usb*		                            auto            auto  defaults	voldmanaged=usb:auto

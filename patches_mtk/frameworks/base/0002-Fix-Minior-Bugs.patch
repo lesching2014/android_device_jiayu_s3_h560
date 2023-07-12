@@ -24,7 +24,7 @@ diff --git a/services/core/java/com/android/server/am/BatteryStatsService.java b
 index e6241c5..9d0c338 100644
 --- a/services/core/java/com/android/server/am/BatteryStatsService.java
 +++ b/services/core/java/com/android/server/am/BatteryStatsService.java
-@@ -1442,7 +1442,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
+@@ -1443,7 +1443,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
      void updateExternalStatsSync(final String reason, int updateFlags) {
          SynchronousResultReceiver wifiReceiver = null;
          SynchronousResultReceiver bluetoothReceiver = null;
@@ -32,7 +32,7 @@ index e6241c5..9d0c338 100644
  
          synchronized (mExternalStatsLock) {
              if (mContext == null) {
-@@ -1478,11 +1477,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
+@@ -1478,11 +1478,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
                  if (mTelephony == null) {
                      mTelephony = TelephonyManager.from(mContext);
                  }
@@ -44,7 +44,7 @@ index e6241c5..9d0c338 100644
              }
  
              WifiActivityEnergyInfo wifiInfo = null;
-@@ -1500,12 +1494,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
+@@ -1495,12 +1495,6 @@ public final class BatteryStatsService extends IBatteryStats.Stub
                  Slog.w(TAG, "Timeout reading bt stats");
              }
  
@@ -377,7 +377,7 @@ diff --git a/services/core/java/com/android/server/NetworkManagementService.java
 index 4099d93..13b0c7c 100644
 --- a/services/core/java/com/android/server/NetworkManagementService.java
 +++ b/services/core/java/com/android/server/NetworkManagementService.java
-@@ -925,7 +925,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub
+@@ -940,7 +940,7 @@ public class NetworkManagementService extends INetworkManagementService.Stub
                          timestampNanos = SystemClock.elapsedRealtimeNanos();
                      }
                      boolean isActive = cooked[2].equals("active");

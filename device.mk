@@ -7,7 +7,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := JY-S3_ADV,h560,s3_h560,32_h560,s3_32_h560,JY-S3_ADV_32
+# TARGET_OTA_ASSERT_DEVICE := JY-S3_ADV,h560,s3_h560,32_h560,s3_32_h560,JY-S3_ADV_32
 
 PRODUCT_PACKAGES += \
     libstlport
@@ -204,8 +204,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapminfree=512k \
     dalvik.vm.heapmaxfree=8m
 
+#PRODUCT_PROPERTY_OVERRIDES := \
+#    persist.sys.language=zh \
+#    persist.sys.country=CN \
+#    persist.sys.timezone=Asia/Shanghai
+
+PRODUCT_PROPERTY_OVERRIDES := \
+    persist.sys.language=zh \
+    persist.sys.country=HK \
+    persist.sys.timezone=Asia/Hong_Kong
+    
 # Common stuff
 $(call inherit-product, vendor/mad/config/common.mk)
 
 # Vendor
 $(call inherit-product, vendor/jiayu/s3_h560/s3_h560-vendor.mk)
+
+# opengapps
+ifneq ($(wildcard $(LOCAL_PATH)/opengapps.mk),)
+$(call inherit-product, $(LOCAL_PATH)/opengapps.mk)
+endif
