@@ -14,4 +14,5 @@ Battery | 3000 mAh
 Display | 5.5" 1080 x 1920 px
 Camera  | Front: 5.0MPx, Back 13MPx, LED Flash
 
-![JiaYu S3](pictures/jiayu_s3_front.jpg)![JiaYu S3](pictures/jiayu_s3_back.jpg)
+| ![JiaYu S3](pictures/jiayu_s3_front.jpg) | ![JiaYu S3](pictures/jiayu_s3_back.jpg) |
+| ---------------------------------------- | --------------------------------------- |
