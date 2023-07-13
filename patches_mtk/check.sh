@@ -15,7 +15,7 @@ if [[ "$test" == "patches_mtk" ]]; then
 fi
 
 if [[ "$device" == "device" ]] && [[ "$patch" == "patches_mtk" ]]; then
-    dirs="build/tools/releasetools bionic external/wpa_supplicant_8 frameworks/av frameworks/base frameworks/native frameworks/opt/telephony packages/apps/Snap packages/apps/Settings system/core system/sepolicy system/netd"
+    dirs="build bionic external/wpa_supplicant_8 frameworks/av frameworks/base frameworks/native frameworks/opt/telephony packages/apps/Snap packages/apps/Settings system/core system/sepolicy system/netd"
 #packages/apps/FMRadio system/bt
 
     # red + nocolor
