@@ -465,21 +465,21 @@ index 0000000..00050e5
 +##LOCAL_POST_INSTALL_CMD := $(hide) $(foreach t,$(ALL_RECOVERY_TOOLS),ln -sf ${LOCAL_MODULE} $(LOCAL_MODULE_PATH)/$(t);)
 +include $(BUILD_EXECUTABLE)
 \ No newline at end of file
-diff --git a/device/jiayu/s3_h560/patches_mtk/build/tools/releasetools/vendor.patch b/device/jiayu/s3_h560/patches_mtk/build/tools/releasetools/vendor.patch
+
+diff --git a/device/jiayu/s3_h560/patches_mtk/build/vendor.patch b/device/jiayu/s3_h560/patches_mtk/build/vendor.patch
 new file mode 100644
 index 0000000..d8812fa
 --- /dev/null
-+++ b/device/jiayu/s3_h560/patches_mtk/build/tools/releasetools/vendor.patch
-@@ -0,0 +1,47 @@
-+diff --git a/common.py b/common.py
++++ b/device/jiayu/s3_h560/patches_mtk/build/vendor.patch
+@@ -0,0 +1,46 @@
++diff --git a/tools/releasetools/common.py b/tools/releasetools/common.py
 +index 115d49b..d6329ae 100644
-+--- a/common.py
-++++ b/common.py
-+@@ -1021,6 +1021,25 @@ def Cleanup():
-+     else:
++--- a/tools/releasetools/common.py
+++++ b/tools/releasetools/common.py
++@@ -1022,5 +1022,24 @@ def Cleanup():
 +       os.remove(i)
 +
-++
++
 ++def CreateVendorPartition(info):
 ++  info.script.AppendExtra('package_extract_file("install/bin/sgdisk_mt6752", "/tmp/sgdisk");');
 ++  info.script.AppendExtra('package_extract_file("install/bin/toybox_mt6752", "/tmp/toybox");');
@@ -498,10 +498,10 @@ index 0000000..d8812fa
 ++  info.script.AppendExtra('abort("Create /vendor partition failed.");');
 ++  info.script.AppendExtra('endif;');
 ++
-+
+++
 + class PasswordManager(object):
 +   def __init__(self):
-+@@ -1298,6 +1298,7 @@ class DeviceSpecificParams(object):
++@@ -1279,6 +1298,7 @@ class DeviceSpecificParams(object):
 +
 +   def FullOTA_InstallBegin(self):
 +     """Called at the start of full OTA installation."""
@@ -509,7 +509,7 @@ index 0000000..d8812fa
 +     return self._DoCall("FullOTA_InstallBegin")
 +
 +   def FullOTA_InstallEnd(self):
-+@@ -1332,6 +1332,7 @@ class DeviceSpecificParams(object):
++@@ -1312,6 +1332,7 @@ class DeviceSpecificParams(object):
 +   def IncrementalOTA_InstallBegin(self):
 +     """Called at the start of incremental OTA installation (after
 +     verification is complete)."""
