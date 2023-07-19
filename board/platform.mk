@@ -40,43 +40,12 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 #TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
 # Architecture Extensions
-#ARCH_ARM_HAVE_NEON := true
-#ARCH_ARM_HAVE_VFP := true
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_BOARD_SUFFIX := _64
 TARGET_USES_64_BIT_BINDER := true
 TARGET_CPU_CORTEX_A53 := true
-#TARGET_SOC := mt6753
-
-#TARGET_CPU_ABI_LIST := arm64-v8a,armeabi-v7a,armeabi
-#TARGET_CPU_ABI_LIST_32_BIT := armeabi-v7a,armeabi
-#TARGET_CPU_ABI_LIST_64_BIT := arm64-v8a
-#TARGET_SUPPORTS_32_BIT_APPS := true
-#TARGET_SUPPORTS_64_BIT_APPS := true
-
 TARGET_USES_EARLY_SUSPEND := true
-
-# Legacy blobs
-#TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
-
-# split properties
-#BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-
-# custom libinit
-#TARGET_INIT_VENDOR_LIB := libinit_s3_h560
-
-# Use stock RIL stack
-#ENABLE_VENDOR_RIL_SERVICE := true
-#BOARD_PROVIDES_LIBRIL := true
-
-# Allow duplicate rules
-#BUILD_BROKEN_DUP_RULES := true
-
-#ENABLE_SCHEDBOOST := true
-
-# Custom RenderScript
-#OVERRIDE_RS_DRIVER := libRSDriver_mtk.so
 
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true

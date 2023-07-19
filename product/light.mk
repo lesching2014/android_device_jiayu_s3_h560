@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-# Light HAL
-#PRODUCT_PACKAGES += \
-#    android.hardware.light@2.0-service.mtk
-
 # Light packages
 PRODUCT_PACKAGES += \
     lights.mt6752

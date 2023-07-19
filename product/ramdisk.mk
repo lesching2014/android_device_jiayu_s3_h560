@@ -23,22 +23,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.performance.rc:root/init.performance.rc \
     $(LOCAL_PATH)/rootdir/ueventd.mt6752.rc:root/ueventd.mt6752.rc \
     $(LOCAL_PATH)/rootdir/init.recovery.mt6752.rc:root/init.recovery.mt6752.rc
-
-#    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
-#    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
-#    $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-#    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-#    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-
-# Ramdisk packages
-#PRODUCT_PACKAGES += \
-#    ueventd.mt6752.rc \
-#    init.recovery.mt6752.rc
-
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/rootdir/enableswap.sh:root/enableswap.sh \
-#    $(LOCAL_PATH)/rootdir/fstab.charger:root/fstab.charger \
-#    $(LOCAL_PATH)/rootdir/init.microtrust.rc:root/init.microtrust.rc \
-#    $(LOCAL_PATH)/rootdir/init.project.rc:root/init.project.rc \
-#    $(LOCAL_PATH)/rootdir/init.rc:root/init.rc \
-#    $(LOCAL_PATH)/rootdir/init.ssd.rc:root/init.ssd.rc \

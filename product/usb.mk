@@ -14,14 +14,9 @@
 # limitations under the License.
 #
 
-# USB Hal
-#PRODUCT_PACKAGES += \
-#    android.hardware.usb@1.0-service.basic
-
 # USB packages
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
-#    librs_jni
 
 # Camera permissions
 PRODUCT_COPY_FILES += \

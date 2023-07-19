@@ -20,22 +20,3 @@ TARGET_INCLUDE_AUDIO_SYMBOLS := true
 TARGET_INCLUDE_UI_SYMBOLS := true
 TARGET_INCLUDE_OMX_SYMBOLS := true
 TARGET_INCLUDE_GPS_SYMBOLS := true
-#TARGET_INCLUDE_GUI_SYMBOLS := true
-#TARGET_INCLUDE_CAMERA_SYMBOLS := true
-
-#include $(TARGET_COPY_OUT_VENDOR)/mad/config/symbols.mk
-
-# Shims
-#TARGET_LD_SHIM_LIBS := \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib/liblog.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libshim_xlog.so \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib64/liblog.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libshim_xlog.so \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib/libgui.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libmtkshim_gui.so \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib64/libgui.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libmtkshim_gui.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib/hw/audio.primary.$(platform).so|/$(TARGET_COPY_OUT_VENDOR)/lib/libmtkshim_audio.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib64/hw/audio.primary.$(platform).so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libmtkshim_audio.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib/libcam.camadapter.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libmtkshim_camera.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib64/libcam.camadapter.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libmtkshim_camera.so \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib/libui.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libmtkshim_ui.so \
-#	/$(TARGET_COPY_OUT_SYSTEM)/lib64/libui.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libmtkshim_ui.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib/libcam.camnode.so|/$(TARGET_COPY_OUT_VENDOR)/lib/libmtkshim_camera.so \
-#	/$(TARGET_COPY_OUT_VENDOR)/lib64/libcam.camnode.so|/$(TARGET_COPY_OUT_VENDOR)/lib64/libmtkshim_camera.so

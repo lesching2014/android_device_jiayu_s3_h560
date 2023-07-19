@@ -58,10 +58,6 @@ TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 #TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 
-# TWRP.fstab
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/recovery.fstab
-
 # Time Zone data for Recovery
 #PRODUCT_COPY_FILES += \
 #    system/timezone/output_data/iana/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata

@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-# Power HAL
-#PRODUCT_PACKAGES += \
-#    android.hardware.power@1.1-service.mtk
-
 # Power packages
 PRODUCT_PACKAGES += \
     charger \

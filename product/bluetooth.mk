@@ -14,14 +14,6 @@
 # limitations under the License.
 #
 
-# Bluetooth HAL
-#PRODUCT_PACKAGES += \
-#    android.hardware.bluetooth@1.0-service.mtk
-
-# Bluetooth packages (MAD 8.0.0)
-#PRODUCT_PACKAGES += \
-#    libbt-vendor
-
 # Bluetooth permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.bluetooth.xml \

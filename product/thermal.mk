@@ -19,9 +19,3 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal/.ht120.mtc:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/.ht120.mtc \
     $(LOCAL_PATH)/configs/thermal/thermal.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/thermal.conf \
     $(LOCAL_PATH)/configs/thermal/thermal.off.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/thermal.off.conf
-#    $(LOCAL_PATH)/configs/thermal/.thermal_policy_00:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/.thermal_policy_00
-
-# Thermal packages
-#PRODUCT_PACKAGES += \
-#    android.hardware.thermal@1.0-service.mtk \
-#    thermal_manager

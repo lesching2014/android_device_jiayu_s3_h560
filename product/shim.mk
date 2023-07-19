@@ -22,19 +22,3 @@ PRODUCT_PACKAGES += \
     libshim_snd \
     libshim_ui \
     libshim_xlog
-#    libshim_asc \
-#    libshim_audio \
-#    libshim_audioCompat \
-#    libshim_cam \
-#    libshim_fence \
-#    libshim_gui \
-#    libshim_parcel \
-#    libshim_ui
-
-# Mediatek
-#PRODUCT_PACKAGES += \
-#    libstlport
-
-# MTK Logging functions
-#PRODUCT_PACKAGES += \
-#    liblog_mtk

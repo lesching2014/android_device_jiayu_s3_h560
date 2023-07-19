@@ -14,11 +14,6 @@
 # limitations under the License.
 #
 
-# Sensors
-#PRODUCT_PACKAGES += \
-#    android.hardware.sensors@1.0-impl.mtk \
-#    android.hardware.sensors@1.0-service.mtk
-
 # Sensor Calibration
 PRODUCT_PACKAGES += \
     meizupshelper \

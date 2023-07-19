@@ -29,14 +29,6 @@ PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant
 
-#   android.hardware.wifi@1.0-service \
-#   wificond \
-#   wifilogd \
-#   wpa_supplicant.conf \
-#   muxreport \
-#   terservice \
-#   dhcpcd.conf \
-
  # WiFi permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.wifi.xml \

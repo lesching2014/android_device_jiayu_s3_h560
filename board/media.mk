@@ -15,7 +15,6 @@
 #
 
 # MTK audio
-#BOARD_USES_MTK_AUDIO := true
 USE_XML_AUDIO_POLICY_CONF := 1
 
 # Fix video autoscaling on old OMX decoders

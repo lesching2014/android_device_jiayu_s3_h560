@@ -14,11 +14,8 @@
 # limitations under the License.
 #
 
-# Seccomp Filter
-#BOARD_SECCOMP_POLICY := \
-#       $(LOCAL_PATH)/seccomp
-       
-# Seccomp policy
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/seccomp/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy \
-#    $(LOCAL_PATH)/seccomp/mediacodec.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediacodec.policy
+# magisk
+ifneq ($(wildcard vendor/magisk/Android.mk),)
+PRODUCT_PACKAGES += \
+    99-magisk
+endif

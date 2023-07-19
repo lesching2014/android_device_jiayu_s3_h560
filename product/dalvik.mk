@@ -14,14 +14,6 @@
 # limitations under the License.
 #
 
-# Dalvik heap configurations
-#$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-dalvik-heap.mk)
-
-# Call hwui memory configurations
-#$(call inherit-product-if-exists, frameworks/native/build/phone-xhdpi-2048-hwui-memory.mk)
-#$(call inherit-product-if-exists, frameworks/native/build/phone-xxhdpi-3072-hwui-memory.mk)
-
 # Dalvik
 PRODUCT_TAGS += dalvik.gc.type-precise
 

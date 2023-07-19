@@ -33,27 +33,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.telephony.ril.config=fakeiccid \
     ro.com.android.mobiledata=false \
     ro.sys.sdcardfs=true
-#    ro.secure=0 \
-#    ro.adb.secure=0 \
-#    camera.disable_zsl_mode=1 \
-#    persist.service.acm.enable=0 \
-#    persist.sys.dun.override=0 \
-#    ro.allow.mock.location=0 \
-#    ro.debuggable=1 \
-#    ro.dalvik.vm.native.bridge=0 \
-#    ro.mount.fs=ext4 \
-#    ro.oem_unlock_supported=1 \
 
-# Ims
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.mtk_ims_support=1 \
-#    ro.mtk_volte_support=1 \
-#    persist.mtk.volte.enable=1 \
-#    ro.mtk_vilte_support=1 \
-#    persist.mtk.ims.video.enable=1 \
-#    ro.mtk_vilte_ut_support=0 \
-#    persist.mtk_dynamic_ims_switch=1
-   
 # Language and Country
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.language=en \
@@ -64,8 +44,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Media 
 PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.legacyencoder=0
-#    media.stagefright.legacyencoder=true \
-#    media.stagefright.less-secure=true
 
 # Tethering
 PRODUCT_PROPERTY_OVERRIDES += \

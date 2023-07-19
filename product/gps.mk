@@ -15,17 +15,13 @@
 #
 
 # The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
+#$(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 # GPS library
 PRODUCT_PACKAGES += \
     gps.mt6752 \
     libcurl \
     YGPS
-
-# AGPS
-#PRODUCT_PACKAGES += \
-#    libandroid_net
 
 # A-GPS
 PRODUCT_COPY_FILES += \

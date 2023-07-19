@@ -14,24 +14,11 @@
 # limitations under the License.
 #
 
-# NFC configurations
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/configs/nfc/libnfc-brcm.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/libnfc-brcm.conf \
-#    $(LOCAL_PATH)/configs/nfc/nfc.cfg:$(TARGET_COPY_OUT_SYSTEM)/etc/nfc.cfg \
-#    $(LOCAL_PATH)/configs/nfc/nfcse.cfg:$(TARGET_COPY_OUT_SYSTEM)/etc/nfcse.cfg
-#    $(LOCAL_PATH)/configs/nfc/nfcee_access.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/nfcee_access.xml
-
 # NFC packages
 PRODUCT_PACKAGES += \
     com.android.nfc_extras \
     Nfc \
     Tag
-#    libmtknfc_dynamic_load_jni \
-#    libnfc_mt6605_jni \
-
-# NFC stack
-#PRODUCT_PACKAGES += \
-#    nfcstackp
 
 # NFC permissions
 PRODUCT_COPY_FILES += \

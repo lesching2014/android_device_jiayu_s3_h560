@@ -40,15 +40,12 @@ BOARD_MKBOOTIMG_ARGS += --board $(BOARD_NAME)
 # Kernel properties
 TARGET_KERNEL_SOURCE := kernel/jiayu/s3_h560
 TARGET_KERNEL_CONFIG := h560_defconfig
-#TARGET_KERNEL_SOURCE := kernel/jiayu/k5fpr
-#TARGET_KERNEL_CONFIG := k5fpr_defconfig
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 MTK_APPENDED_DTB_SUPPORT := yes
 
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_IS_64_BIT := true
-#MTK_K64_SUPPORT := yes
 
 # 64-bit Binder
 TARGET_USES_64_BIT_BINDER := true

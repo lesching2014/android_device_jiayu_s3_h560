@@ -18,4 +18,3 @@
 PRODUCT_PACKAGES += \
     libjni_livedisplay \
     libion
-#    WallpaperPicker
