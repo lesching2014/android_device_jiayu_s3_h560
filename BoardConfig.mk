@@ -1,180 +1,98 @@
-# mt6752 platform boardconfig
-LOCAL_PATH := device/jiayu/s3_h560
+#
+# Copyright (C) 2023 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
 
-include vendor/mad/config/board.mk
+#######################################################################
+### PATH
+#######################################################################
+FILE_LIST := $(subst /, ,$(abspath $(lastword $(MAKEFILE_LIST))))
+NUMBER := $(shell expr $(words $(FILE_LIST)) - 1)
+PATH_LIST := $(wordlist 1,$(shell expr $(NUMBER) - 3),$(FILE_LIST))
+# Build path
+ANDROID_BUILD_TOP :=$(addprefix /,$(subst $(space),/,$(PATH_LIST)))
+PATH_LIST := $(wordlist $(shell expr $(NUMBER) - 2),$(NUMBER),$(FILE_LIST))
+# Device path
+LOCAL_PATH := $(subst $(space),/,$(PATH_LIST))
+#LOCAL_PATH := device/jiayu/s3_h560
 
-# Platform
-ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_BOARD_PLATFORM := mt6752
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_FACTORYIMAGE := true
+# CyanogenMod
+BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/hardware/cmhw
+# System.prop
+TARGET_SYSTEM_PROP := $(LOCAL_PATH)/configs/system.prop
+# sepolicy
+BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
+# Seccomp filter
+BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+# Specific Header
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+#######################################################################
+###
+#######################################################################
+# CyanogenMod Hardware Hooks
+BOARD_USES_CYANOGEN_HARDWARE := true
 
-# CPU
-TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-a
-TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_ABI2 :=
-TARGET_CPU_VARIANT := cortex-a53
-TARGET_CPU_SMP := true
-
-TARGET_2ND_ARCH := arm
-TARGET_2ND_ARCH_VARIANT := armv7-a-neon
-TARGET_2ND_CPU_ABI := armeabi-v7a
-TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a53
-TARGET_BOARD_SUFFIX := _64
-TARGET_USES_64_BIT_BINDER := true
-
-TARGET_CPU_CORTEX_A53 := true
-
-TARGET_BOOTLOADER_BOARD_NAME := mt6752
+# Kernel
+TARGET_KMODULES := true
+BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
 # Ashmem
 DISABLE_ASHMEM_TRACKING := true
+
+# MTK Hardware
+BOARD_HAS_MTK_HARDWARE := true
 BOARD_USES_MTK_HARDWARE := true
 BOARD_MTK_HARDWARE := true
+MTK_FM_SUPPORT := yes
 MTK_HARDWARE := true
-# Charger
-BOARD_CHARGER_SHOW_PERCENTAGE := true
-# CyanogenMod Hardware Hooks
-BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := $(LOCAL_PATH)/cmhw
-
-# Kernel
-TARGET_USES_64_BIT_BINDER := true
-TARGET_IS_64_BIT := true
-BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive androidboot.selinux=disabled
-BOARD_KERNEL_BASE := 0x40078000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x03f88000 --second_offset 0x00e88000 --tags_offset 0x0df88000 --board 1450352440
-TARGET_KERNEL_SOURCE := kernel/jiayu/s3_h560
-TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := h560_defconfig
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-opt-linux-android-
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/aarch64-linux-android-opt-gnu-8.x/bin
-MTK_APPENDED_DTB_SUPPORT := yes
-BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
-
-# build old-style zip files (required for ota updater)
-BLOCK_BASED_OTA := false
-
-TARGET_USES_EARLY_SUSPEND := true
-
-# Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 20971520
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 20971520
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1610612736
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 13474709504
-BOARD_CACHEIMAGE_PARTITION_SIZE := 402653184
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_FLASH_BLOCK_SIZE := 131072
-
-BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_USERIMAGES_USE_EXT4 := true
-TARGET_USERIMAGES_USE_F2FS := true
-# Use mke2fs instead of make_ext4fs
-TARGET_USES_MKE2FS := true
-
-# Include needed symbols
-TARGET_INCLUDE_XLOG_SYMBOLS := true
-TARGET_INCLUDE_AUDIO_SYMBOLS := true
-TARGET_INCLUDE_UI_SYMBOLS := true
-TARGET_INCLUDE_OMX_SYMBOLS := true
-TARGET_INCLUDE_GPS_SYMBOLS := true
-
-# Display
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH := 1080
-
-TARGET_BOOTANIMATION_HALF_RES := true
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
-
-# Camera
-#BOARD_USES_LEGACY_MTK_AV_BLOB := true
-#BOARD_USES_MTK_MEDIA_PROFILES:=true
-TARGET_HAS_LEGACY_LP_CAM := true
-USE_CAMERA_STUB := true
-# Power and native tap-to-wake
-TARGET_POWERHAL_VARIANT := mtk-xen0n
+#MTK_ANT_SUPPORT := yes
 
 # Disable memcpy opt (for audio libraries)
 TARGET_CPU_MEMCPY_OPT_DISABLE := true
 
-# Fix video autoscaling on old OMX decoders
-TARGET_OMX_LEGACY_RESCALING:=true
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
 
-# Extended Filesystem Support
-TARGET_KERNEL_HAVE_EXFAT := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH_MTK := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
-BOARD_MEDIATEK_USES_GPS:=true
-# LightHAL
-TARGET_PROVIDES_LIBLIGHT := true
-BOARD_GPS_LIBRARIES:=true
-#ril
-BOARD_RIL_CLASS := ../../../device/jiayu/s3_h560/ril
-BOARD_CONNECTIVITY_MODULE := conn_soc
-
-SIM_COUNT := 2
-PRODUCT_PROPERTY_OVERRIDES += ro.telephony.sim.count=$(SIM_COUNT)
-
-#dt2w
-TARGET_TAP_TO_WAKE_NODE := /sys/devices/bus.2/11007000.I2C0/i2c-0/0-0020/gesture
-
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+# dexpreopt
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC := true
 
 # Flags
 BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 BOARD_GLOBAL_CFLAGS += -DDISABLE_HW_ID_MATCH_CHECK
 
-# Recovery
-RECOVERY_VARIANT := twrp
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
-BOARD_NO_SECURE_DISCARD := true # secure discard is painfully slow...
-# TWRP-specific
-ifeq ($(RECOVERY_VARIANT), twrp)
-TW_THEME := portrait_hdpi
-DEVICE_RESOLUTION := 1080x1920
-DEVICE_SCREEN_WIDTH := 1080
-DEVICE_SCREEN_HEIGHT := 1920
-TW_SCREEN_BLANK_ON_BOOT := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_ALLOW_PARTITION_SDCARD := true
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_DEFAULT_EXTERNAL_STORAGE := true
-TW_USE_TOOLBOX := true
-endif
-
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-TARGET_SYSTEM_PROP := $(LOCAL_PATH)/system.prop
-
-# Enable Minikin text layout engine (will be the default soon)
-USE_MINIKIN := true
-
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-#dexpreopt
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
-
 # SELinux
-BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 WITH_ROOT_METHOD = magisk
+#######################################################################
+###
+#######################################################################
+# debug boot
+DEBUG_BOOT := true
+TARGET_SYSTEM_MINOR := 17
 
-# Seccomp filter
-BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+# Seperate vendor
+TARGET_COPY_OUT_VENDOR := system/vendor
+TARGET_COPY_OUT_VENDOR := vendor
 
-# opengapps
-ifneq ($(wildcard $(LOCAL_PATH)/opengapps.mk),)
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4831838208
-DONT_DEXPREOPT_PREBUILTS := true
+# Device vendor board
+ifneq ($(wildcard vendor/jiayu/s3_h560/BoardConfigVendor.mk),)
+include vendor/jiayu/s3_h560/BoardConfigVendor.mk
 endif
+
+# Device board elements
+include $(LOCAL_PATH)/board/*.mk
+#######################################################################

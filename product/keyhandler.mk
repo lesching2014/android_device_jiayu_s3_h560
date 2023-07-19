@@ -14,12 +14,17 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# Keyboard layout
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/mtk-kpd.kl \
+#    $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/ACCDET.kl \
+#    $(LOCAL_PATH)/configs/keylayout/AVRCP.kl:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/AVRCP.kl
+	 
+# Keyhandler package
+#PRODUCT_PACKAGES += \
+#    com.lineageos.keyhandler
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+#PRODUCT_SYSTEM_SERVER_JARS += com.lineageos.keyhandler
+
+# Never dexopt the keyhandler
+#$(call add-product-dex-preopt-module-config,com.lineageos.keyhandler,disable)

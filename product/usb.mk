@@ -14,12 +14,16 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# USB Hal
+#PRODUCT_PACKAGES += \
+#    android.hardware.usb@1.0-service.basic
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# USB packages
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+#    librs_jni
+
+# Camera permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.usb.accessory.xml

@@ -14,12 +14,18 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# Camera
+#BOARD_USES_LEGACY_MTK_AV_BLOB := true
+#BOARD_USES_MTK_MEDIA_PROFILES:=true
+BOARD_HAS_LP_CAM := true
+USE_CAMERA_STUB := true
+#TARGET_USES_NON_TREBLE_CAMERA := true
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# Legacy HAL
+#TARGET_HAS_LEGACY_LP_CAM := true
+#TARGET_HAS_LEGACY_CAMERA_HAL1 := true
+
+#Camera Wrappers
+#USE_MTK_CAMERA_WRAPPER := true
+
+#TARGET_SPECIFIC_CAMERA_PARAMETER_LIBRARY := libcamera_parameters_mtk

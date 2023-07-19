@@ -12,6 +12,10 @@ on init
     chown shell system /proc/mtk_battery_cmd/current_cmd
     chown shell system /proc/mtk_battery_cmd/discharging_cmd
     
+# Right now vendor lives on the same filesystem as system,
+# but someday that may change.
+    symlink /system/vendor /vendor
+
     # mount points
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system

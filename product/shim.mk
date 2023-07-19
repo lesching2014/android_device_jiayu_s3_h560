@@ -14,12 +14,27 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# Mtk symbols & shim
+PRODUCT_PACKAGES += \
+    libshim_agps \
+    libshim_asc \
+    libshim_gui \
+    libshim_snd \
+    libshim_ui \
+    libshim_xlog
+#    libshim_asc \
+#    libshim_audio \
+#    libshim_audioCompat \
+#    libshim_cam \
+#    libshim_fence \
+#    libshim_gui \
+#    libshim_parcel \
+#    libshim_ui
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# Mediatek
+#PRODUCT_PACKAGES += \
+#    libstlport
+
+# MTK Logging functions
+#PRODUCT_PACKAGES += \
+#    liblog_mtk

@@ -14,12 +14,9 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# MTK audio
+#BOARD_USES_MTK_AUDIO := true
+USE_XML_AUDIO_POLICY_CONF := 1
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# Fix video autoscaling on old OMX decoders
+TARGET_OMX_LEGACY_RESCALING:=true

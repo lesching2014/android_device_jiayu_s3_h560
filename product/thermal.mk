@@ -14,12 +14,14 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# Thermal configurations
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/thermal/.ht120.mtc:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/.ht120.mtc \
+    $(LOCAL_PATH)/configs/thermal/thermal.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/thermal.conf \
+    $(LOCAL_PATH)/configs/thermal/thermal.off.conf:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/thermal.off.conf
+#    $(LOCAL_PATH)/configs/thermal/.thermal_policy_00:$(TARGET_COPY_OUT_SYSTEM)/etc/.tp/.thermal_policy_00
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# Thermal packages
+#PRODUCT_PACKAGES += \
+#    android.hardware.thermal@1.0-service.mtk \
+#    thermal_manager

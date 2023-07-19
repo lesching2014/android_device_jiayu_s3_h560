@@ -14,12 +14,31 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    fsck.f2fs \
+    mkfs.f2fs \
+    make_ext4fs
 
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# exFAT
+PRODUCT_PACKAGES += \
+    mount.exfat \
+    fsck.exfat \
+    mkfs.exfat
+
+# NTFS
+PRODUCT_PACKAGES += \
+    fsck.ntfs \
+    mkfs.ntfs \
+    mount.ntfs
+
+# F2FS
+PRODUCT_PACKAGES += \
+    fibmap.f2fs \
+    resize2fs \
+    setup_fs
+
+# file manager
+PRODUCT_PACKAGES += \
+       FileManager

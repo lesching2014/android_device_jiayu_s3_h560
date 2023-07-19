@@ -14,12 +14,8 @@
 # limitations under the License.
 #
 
-# This file is executed by build/envsetup.sh, and can use anything
-# defined in envsetup.sh.
-#
-# In particular, you can add lunch options with the add_lunch_combo
-# function: add_lunch_combo generic-eng
-
-for var in eng user userdebug; do
-  add_lunch_combo lineage_s3_h560-$var
-done
+# opengapps
+ifneq ($(wildcard vendor/opengapps/build/opengapps-packages.mk),)
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4831838208
+DONT_DEXPREOPT_PREBUILTS := true
+endif
