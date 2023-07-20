@@ -1,6 +1,6 @@
 #!/bin/sh
 
-command1="git checkout --"
+command1="git checkout -- ."
 command2="git clean -df"
 script=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 lineage="`echo $script | rev | cut -f5 -d'/' | rev`"
