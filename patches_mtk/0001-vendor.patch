@@ -471,12 +471,12 @@ new file mode 100644
 index 0000000..d8812fa
 --- /dev/null
 +++ b/device/jiayu/s3_h560/patches_mtk/build/vendor.patch
-@@ -0,0 +1,46 @@
+@@ -0,0 +1,47 @@
 +diff --git a/tools/releasetools/common.py b/tools/releasetools/common.py
 +index 115d49b..d6329ae 100644
 +--- a/tools/releasetools/common.py
 ++++ b/tools/releasetools/common.py
-+@@ -1022,5 +1022,24 @@ def Cleanup():
++@@ -1022,6 +1022,25 @@ def Cleanup():
 +       os.remove(i)
 +
 +
@@ -501,6 +501,7 @@ index 0000000..d8812fa
 ++
 + class PasswordManager(object):
 +   def __init__(self):
++     self.editor = os.getenv("EDITOR", None)
 +@@ -1279,6 +1298,7 @@ class DeviceSpecificParams(object):
 +
 +   def FullOTA_InstallBegin(self):
