@@ -21,7 +21,7 @@ index d16e02f..4d5ffce 100644
 +/dev/sunwave_fp           0666   root       root
 +
 +# add by microarray xuh
-+/dev/madev0               0666	  root	      root
++/dev/madev0               0666   root       root
 +# add by microarray xuh
 +
 +# add by shuaishuai for fpsensor start
