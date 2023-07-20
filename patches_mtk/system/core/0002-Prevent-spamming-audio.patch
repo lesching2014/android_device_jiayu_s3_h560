@@ -7,7 +7,7 @@ diff --git a/liblog/logger_write.c b/liblog/logger_write.c
 index c7b5a84..aa85dd8 100644
 --- a/liblog/logger_write.c
 +++ b/liblog/logger_write.c
-@@ -398,6 +398,26 @@ LIBLOG_ABI_PUBLIC int __android_log_buf_write(int bufID, int prio,
+@@ -394,6 +398,26 @@ LIBLOG_ABI_PUBLIC int __android_log_buf_write(int bufID, int prio,
      if (!tag)
          tag = "";
  
