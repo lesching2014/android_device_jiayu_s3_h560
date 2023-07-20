@@ -157,7 +157,7 @@ diff --git a/core/jni/fd_utils-inl.h b/core/jni/fd_utils-inl.h
 index a68a602..a8d1635 100644
 --- a/core/jni/fd_utils-inl.h
 +++ b/core/jni/fd_utils-inl.h
-@@ -307,7 +307,7 @@ class FileDescriptorInfo {
+@@ -306,7 +306,7 @@ class FileDescriptorInfo {
        return true;
      }
  
