@@ -23,7 +23,7 @@ index 3e93d41..a352391 100644
      <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
      <plurals name="show_dev_countdown">
          <item quantity="one">You are now <xliff:g id="step_count">%1$d</xliff:g> step away from being a developer.</item>
-@@ -2377,6 +2377,8 @@
+@@ -2375,6 +2377,8 @@
      <string name="firmware_version">Android version</string>
      <!-- About phone screen, status item label  [CHAR LIMIT=60] -->
      <string name="security_patch">Android security patch level</string>
@@ -55,8 +55,7 @@ diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/
 index 064d62d..16eb2e8 100644
 --- a/src/com/android/settings/DeviceInfoSettings.java
 +++ b/src/com/android/settings/DeviceInfoSettings.java
-@@ -53,7 +53,8 @@ import com.android.internal.util.viper.PackageUtils;
- import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+@@ -53,6 +53,7 @@ import com.android.internal.util.viper.PackageUtils;
 
  public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
 
@@ -64,9 +63,7 @@ index 064d62d..16eb2e8 100644
      private static final String LOG_TAG = "DeviceInfoSettings";
 
      private static final String KEY_MANUAL = "manual";
-@@ -152,8 +152,11 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
-         findPreference(KEY_MOD_VERSION).setEnabled(true);
-         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
+@@ -153,6 +154,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
          setExplicitValueSummary(KEY_MOD_API_LEVEL, constructApiLevelString());
          findPreference(KEY_MOD_API_LEVEL).setEnabled(true);
 
@@ -76,7 +73,7 @@ index 064d62d..16eb2e8 100644
          if (!SELinux.isSELinuxEnabled()) {
              String status = getResources().getString(R.string.selinux_status_disabled);
              setStringSummary(KEY_SELINUX_STATUS, status);
-@@ -335,6 +335,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
+@@ -331,6 +335,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
                          + "queryIntentActivities() returns empty" );
                  return true;
              }
