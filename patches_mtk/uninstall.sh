@@ -1,6 +1,7 @@
 #!/bin/sh
 
-command="git checkout -- . && git clean -df"
+command1="git checkout --"
+command2="git clean -df"
 script=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 lineage="`echo $script | rev | cut -f5 -d'/' | rev`"
 device="`echo $script | rev | cut -f4 -d'/' | rev`"
@@ -25,16 +26,19 @@ if [[ "$device" == "device" ]] && [[ "$patch" == "patches_mtk" ]]; then
     rootdirectory="$PWD"
     echo -e "\n${RED}Cleaning ${NC}create vendor partition ${RED}patches...${NC}\n"
     cd $device/$brand/$model/$patch
-    $command
+    $command1
+    $command2
     cd ..
-    $command
+    $command1
+    $command2
     cd $rootdirectory
 
     for dir in $dirs ; do
         rootdirectory="$PWD"
         cd $dir
         echo -e "\n${RED}Checking ${NC}$dir ${RED}patches...${NC}\n"
-        $command
+        $command1
+        $command2
         cd $rootdirectory
     done
 fi
