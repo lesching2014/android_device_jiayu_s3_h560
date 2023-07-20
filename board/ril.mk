@@ -18,5 +18,5 @@
 BOARD_RIL_CLASS := $(LOCAL_PATH)/hardware/ril
 BOARD_CONNECTIVITY_MODULE := conn_soc
 
-#SIM_COUNT := 2
+SIM_COUNT := 2
 PRODUCT_PROPERTY += ro.telephony.sim.count=$(SIM_COUNT)
