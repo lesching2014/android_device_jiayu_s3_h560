@@ -55,7 +55,7 @@ diff --git a/src/com/android/settings/DeviceInfoSettings.java b/src/com/android/
 index 064d62d..16eb2e8 100644
 --- a/src/com/android/settings/DeviceInfoSettings.java
 +++ b/src/com/android/settings/DeviceInfoSettings.java
-@@ -53,6 +53,7 @@ import com.android.internal.util.viper.PackageUtils;
+@@ -53,6 +54,7 @@ import com.android.internal.util.viper.PackageUtils;
 
  public class DeviceInfoSettings extends SettingsPreferenceFragment implements Indexable {
 
