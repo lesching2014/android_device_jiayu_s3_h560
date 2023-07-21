@@ -14,7 +14,17 @@
 # limitations under the License.
 #
 
-# magisk
+# Teamwin magisk prebuilt
+ifneq ($(wildcard external/magisk-prebuilt/Android.mk),)
+TW_INCLUDE_REPACKTOOLS := true
+TW_INCLUDE_RESETPROP_PREBUILT := true
+TW_INCLUDE_RESETPROP_SOURCE := true
+TW_INCLUDE_LIBRESETPROP_SOURCE := true
+TW_INCLUDE_RESETPROP := true
+TW_INCLUDE_LIBRESETPROP := true
+endif
+
+# Magisk
 ifneq ($(wildcard vendor/magisk/Android.mk),)
 PRODUCT_PACKAGES += \
     99-magisk
