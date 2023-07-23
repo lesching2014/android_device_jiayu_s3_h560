@@ -12,5 +12,6 @@ def CreateVendorPartition(info):
   info.script.AppendExtra('ui_print("Checking for vendor partition...");');
   info.script.AppendExtra('if run_program("/tmp/vendor.sh") != 0 then');
   info.script.AppendExtra('abort("Create /vendor partition failed.");');
+  info.script.AppendExtra('else');
   info.script.AppendExtra('ui_print("Successfully completed.");');
   info.script.AppendExtra('endif;');
