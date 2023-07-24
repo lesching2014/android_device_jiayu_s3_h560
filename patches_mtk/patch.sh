@@ -48,7 +48,7 @@ if [[ "$command" != "" ]]; then
                 rootdirectory="$PWD"
                 cd $line
                 echo -e "\n${RED}$title ${NC}$line ${RED}patches...${NC}\n"
-                if [[ "$tile" == "Uninstalling" ]]; then
+                if [[ "$title" == "Uninstalling" ]]; then
                     $command && $command2
                 else
                     $command $script/$line/*.patch
