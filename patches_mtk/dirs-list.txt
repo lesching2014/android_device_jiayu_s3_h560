@@ -1,0 +1,14 @@
+bionic
+bootable/recovery-twrp
+external/wpa_supplicant_8
+frameworks/av
+frameworks/base
+frameworks/native
+frameworks/opt/telephony
+packages/apps/Snap
+packages/apps/Settings
+system/core
+system/sepolicy
+system/netd
+#packages/apps/FMRadio
+#system/bt
