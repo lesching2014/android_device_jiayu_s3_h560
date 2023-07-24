@@ -15,8 +15,8 @@ index 85cdd32..d5f2d9c 100644
 +ifeq ($(TW_CUSTOM_TIME_ZONE_DST), true)
 +    LOCAL_CFLAGS += -DTW_CUSTOM_TIME_ZONE_DST
 +endif
- ifeq ($(TW_NO_REBOOT_BOOTLOADER), true)
-     LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
+ ifeq ($(TW_REVERSED_NAVBAR_LAYOUT), true)
+     LOCAL_CFLAGS += -DTW_REVERSED_NAVBAR_LAYOUT
  endif
 diff --git a/data.cpp b/data.cpp
 index 5d05d2b..a26be16 100644
