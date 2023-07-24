@@ -1,10 +1,10 @@
 diff --git a/Android.mk b/Android.mk
-index 85cdd32..d5f2d9c 100644
+index 85cdd32..3fba162 100644
 --- a/Android.mk
 +++ b/Android.mk
-@@ -236,6 +236,15 @@ endif
- ifeq ($(TW_CUSTOM_TIME_ZONE_DST), true)
-     LOCAL_CFLAGS += -DTW_CUSTOM_TIME_ZONE_DST
+@@ -227,6 +227,15 @@ endif
+ ifeq ($(TW_HAS_NO_BOOT_PARTITION), true)
+     LOCAL_CFLAGS += -DTW_HAS_NO_BOOT_PARTITION
  endif
 +ifeq ($(TW_REVERSED_NAVBAR_LAYOUT), true)
 +    LOCAL_CFLAGS += -DTW_REVERSED_NAVBAR_LAYOUT
@@ -19,10 +19,10 @@ index 85cdd32..d5f2d9c 100644
      LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
  endif
 diff --git a/data.cpp b/data.cpp
-index 5d05d2b..a26be16 100644
+index 5d05d2b..f0114b6 100644
 --- a/data.cpp
 +++ b/data.cpp
-@@ -821,7 +848,11 @@ void DataManager::SetDefaultValues()
+@@ -821,7 +821,11 @@ void DataManager::SetDefaultValues()
  	mConst.SetValue("tw_mtp_enabled", "0");
  #endif
  	mPersist.SetValue("tw_mount_system_ro", "2");
@@ -30,11 +30,11 @@ index 5d05d2b..a26be16 100644
 +	mPersist.SetValue("tw_never_show_system_ro_page", "1");
 +#else
  	mPersist.SetValue("tw_never_show_system_ro_page", "0");
-+#endif	
++#endif
  	mPersist.SetValue("tw_language", EXPAND(TW_DEFAULT_LANGUAGE));
  	LOGINFO("LANG: %s\n", EXPAND(TW_DEFAULT_LANGUAGE));
  
-@@ -833,13 +864,21 @@ void DataManager::SetDefaultValues()
+@@ -833,13 +837,21 @@ void DataManager::SetDefaultValues()
  #else
  	mConst.SetValue("tw_has_boot_slots", "0");
  #endif
