@@ -1,0 +1,61 @@
+diff --git a/Android.mk b/Android.mk
+index 85cdd32..3fba162 100755
+--- a/Android.mk
++++ b/Android.mk
+@@ -281,6 +281,15 @@ endif
+ ifeq ($(TW_HAS_NO_BOOT_PARTITION), true)
+     LOCAL_CFLAGS += -DTW_HAS_NO_BOOT_PARTITION
+ endif
++ifeq ($(TW_REVERSED_NAVBAR_LAYOUT), true)
++    LOCAL_CFLAGS += -DTW_REVERSED_NAVBAR_LAYOUT
++endif
++ifeq ($(TW_APP_NO_PROMPT), true)
++    LOCAL_CFLAGS += -DTW_APP_NO_PROMPT
++endif
++ifeq ($(TW_CUSTOM_NEVER_SHOW_SYSTEM_RO), true)
++    LOCAL_CFLAGS += -DTW_CUSTOM_NEVER_SHOW_SYSTEM_RO
++endif
+ ifeq ($(TW_NO_REBOOT_BOOTLOADER), true)
+     LOCAL_CFLAGS += -DTW_NO_REBOOT_BOOTLOADER
+ endif
+diff --git a/data.cpp b/data.cpp
+index 5d05d2b..f0114b6 100755
+--- a/data.cpp
++++ b/data.cpp
+@@ -892,7 +892,11 @@ void DataManager::SetDefaultValues()
+ 	mConst.SetValue("tw_mtp_enabled", "0");
+ #endif
+ 	mPersist.SetValue("tw_mount_system_ro", "2");
++#ifdef TW_CUSTOM_NEVER_SHOW_SYSTEM_RO
++	mPersist.SetValue("tw_never_show_system_ro_page", "1");
++#else
+ 	mPersist.SetValue("tw_never_show_system_ro_page", "0");
++#endif
+ 	mPersist.SetValue("tw_language", EXPAND(TW_DEFAULT_LANGUAGE));
+ 	LOGINFO("LANG: %s\n", EXPAND(TW_DEFAULT_LANGUAGE));
+ 
+@@ -908,15 +912,23 @@ void DataManager::SetDefaultValues()
+ #ifdef TW_NO_LEGACY_PROPS
+ 	LOGINFO("TW_NO_LEGACY_PROPS := true\n");
+ #endif
+-
++#ifdef TW_REVERSED_NAVBAR_LAYOUT
++	mConst.SetValue("tw_samsung_navbar", "1");
++#else
++	mConst.SetValue("tw_samsung_navbar", "0");
++#endif
+ #ifdef TW_OEM_BUILD
+ 	LOGINFO("TW_OEM_BUILD := true\n");
+ 	mConst.SetValue("tw_oem_build", "1");
+ 	mConst.SetValue("tw_app_installed_in_system", "0");
+ #else
+ 	mConst.SetValue("tw_oem_build", "0");
++#ifdef TW_APP_NO_PROMPT
++	mPersist.SetValue("tw_app_prompt", "0");
++#else
+ 	mPersist.SetValue("tw_app_prompt", "1");
++#endif
+ 	mPersist.SetValue("tw_app_install_system", "1");
+ 	mData.SetValue("tw_app_install_status", "0"); // 0 = no status, 1 = not installed, 2 = already installed
+ 	mData.SetValue("tw_app_installed_in_system", "0");
+ #endif
