@@ -1,0 +1,80 @@
+diff --git a/minui/graphics_fbdev.cpp b/minui/graphics_fbdev.cpp
+index 5f64e1e..f78f353 100644
+--- a/minui/graphics_fbdev.cpp
++++ b/minui/graphics_fbdev.cpp
+@@ -46,7 +46,11 @@ static void fbdev_blank(minui_backend* backend __unused, bool blank)
+ #else
+     int ret;
+ 
++#ifdef TW_SCREEN_BLANK_ON_BOOT
++    ret = ioctl(fb_fd, FBIOBLANK, FB_BLANK_UNBLANK);
++#else
+     ret = ioctl(fb_fd, FBIOBLANK, blank ? FB_BLANK_POWERDOWN : FB_BLANK_UNBLANK);
++#endif
+     if (ret < 0)
+         perror("ioctl(): blank");
+ #endif
+diff --git a/minui/graphics_overlay.cpp b/minui/graphics_overlay.cpp
+index 978a3bb..ecb838b 100644
+--- a/minui/graphics_overlay.cpp
++++ b/minui/graphics_overlay.cpp
+@@ -131,7 +131,11 @@ static void overlay_blank(minui_backend* backend __unused, bool blank)
+ #else
+     int ret;
+ 
++#ifdef TW_SCREEN_BLANK_ON_BOOT
++    ret = ioctl(fb_fd, FBIOBLANK, FB_BLANK_UNBLANK);
++#else
+     ret = ioctl(fb_fd, FBIOBLANK, blank ? FB_BLANK_POWERDOWN : FB_BLANK_UNBLANK);
++#endif
+     if (ret < 0)
+         perror("ioctl(): blank");
+ #endif
+diff --git a/minui21/graphics.c b/minui21/graphics.c
+index 580af29..c39a7de 100644
+--- a/minui21/graphics.c
++++ b/minui21/graphics.c
+@@ -499,7 +499,11 @@ void gr_fb_blank(bool blank)
+     if (blank)
+         free_overlay(gr_fb_fd);
+ 
++#ifdef TW_SCREEN_BLANK_ON_BOOT
++    ret = ioctl(gr_fb_fd, FBIOBLANK, FB_BLANK_UNBLANK);
++#else
+     ret = ioctl(gr_fb_fd, FBIOBLANK, blank ? FB_BLANK_POWERDOWN : FB_BLANK_UNBLANK);
++#endif
+     if (ret < 0)
+         perror("ioctl(): blank");
+ 
+diff --git a/minuitwrp/graphics_fbdev.cpp b/minuitwrp/graphics_fbdev.cpp
+index a1c42d0..4132b9a 100644
+--- a/minuitwrp/graphics_fbdev.cpp
++++ b/minuitwrp/graphics_fbdev.cpp
+@@ -87,7 +87,11 @@ static void fbdev_blank(minui_backend* backend __unused, bool blank)
+ #ifndef TW_NO_SCREEN_BLANK
+     int ret;
+ 
++#ifdef TW_SCREEN_BLANK_ON_BOOT
++    ret = ioctl(fb_fd, FBIOBLANK, FB_BLANK_UNBLANK);
++#else
+     ret = ioctl(fb_fd, FBIOBLANK, blank ? FB_BLANK_POWERDOWN : FB_BLANK_UNBLANK);
++#endif
+     if (ret < 0)
+         perror("ioctl(): blank");
+ #endif
+diff --git a/minuitwrp/graphics_overlay.cpp b/minuitwrp/graphics_overlay.cpp
+index 84ea6e0..26b1228 100644
+--- a/minuitwrp/graphics_overlay.cpp
++++ b/minuitwrp/graphics_overlay.cpp
+@@ -175,7 +175,11 @@ static void overlay_blank(minui_backend* backend __unused, bool blank)
+ #else
+     int ret;
+ 
++#ifdef TW_SCREEN_BLANK_ON_BOOT
++    ret = ioctl(fb_fd, FBIOBLANK, FB_BLANK_UNBLANK);
++#else
+     ret = ioctl(fb_fd, FBIOBLANK, blank ? FB_BLANK_POWERDOWN : FB_BLANK_UNBLANK);
++#endif
+     if (ret < 0)
+         perror("ioctl(): blank");
+ #endif
