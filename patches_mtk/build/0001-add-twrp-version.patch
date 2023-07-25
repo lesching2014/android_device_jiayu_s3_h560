@@ -1,0 +1,19 @@
+diff --git a/core/Makefile b/core/Makefile
+index 3fb4247..c91f275 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -286,8 +286,14 @@ endif
+ 
+ build_desc :=
+ 
++
+ ifeq (,$(filter true, $(TARGET_NO_KERNEL) $(TARGET_NO_RECOVERY)))
++    ifneq ($(wildcard bootable/recovery-twrp/variables.h),)
++VERSION=$(shell grep "TW_MAIN_VERSION_STR" bootable/recovery-twrp/variables.h | head -1 | cut -d' ' -f3- | sed 's/"//g' | sed 's/ //g')
++INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery-$(VERSION).img
++    else
+ INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
++    endif
+ else
+ INSTALLED_RECOVERYIMAGE_TARGET :=
+ endif
