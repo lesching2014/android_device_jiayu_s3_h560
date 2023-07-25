@@ -34,6 +34,9 @@ if [[ "$command" != "" ]]; then
     test="`echo ${PWD} | rev | cut -f1 -d'/' | rev`"
     # ---------------------------------
 
+    if [ -f twrp.sh ]; then
+        bash twrp.sh
+    fi
     if [[ "$test" == "patches_mtk" ]]; then
         cd ../../../..
     fi
