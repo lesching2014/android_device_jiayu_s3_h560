@@ -10,6 +10,7 @@ test="`echo ${PWD} | rev | cut -f1 -d'/' | rev`"
 # ---------------------------------
 
 if [[ "$test" == "patches_mtk" ]]; then
+    cd $script
     cd ../../../..
     if [ -f bootable/recovery-twrp/variables.h ]; then
         VERSION=$(grep "TW_MAIN_VERSION_STR" bootable/recovery-twrp/variables.h | head -1 | cut -d' ' -f3- | sed 's/"//g' | sed 's/ //g')
