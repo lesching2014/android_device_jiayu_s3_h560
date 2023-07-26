@@ -19,12 +19,13 @@ if [[ "$test" == "patches_mtk" ]]; then
 fi
 
 if [[ "$VERSION" == "3.1.1" ]]; then
-    rm bootable/recovery-twrp/*.patch
     cp -fr bootable/recovery-twrp/twrp-7.1/* bootable/recovery-twrp
 elif [[ "$VERSION" == "3.2.3" ]]; then
-    rm bootable/recovery-twrp/*.patch
     cp -fr bootable/recovery-twrp/twrp-8.1/* bootable/recovery-twrp
 elif [[ "$VERSION" == "3.7.0_9" ]]; then
-    rm bootable/recovery-twrp/*.patch
     cp -fr bootable/recovery-twrp/twrp-9.0/* bootable/recovery-twrp
+elif [[ "$VERSION" == "3.5.2_10" ]]; then
+    cp -fr bootable/recovery-twrp/twrp-10.0/* bootable/recovery-twrp
+else
+    echo "$VERSION"
 fi
