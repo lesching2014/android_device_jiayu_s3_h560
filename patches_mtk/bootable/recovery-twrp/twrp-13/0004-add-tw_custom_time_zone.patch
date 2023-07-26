@@ -1,0 +1,76 @@
+diff --git a/Android.mk b/Android.mk
+index 85cdd32..d5f2d9c 100755
+--- a/Android.mk
++++ b/Android.mk
+@@ -252,6 +252,15 @@ endif
+ ifeq ($(TW_HAS_NO_BOOT_PARTITION), true)
+     LOCAL_CFLAGS += -DTW_HAS_NO_BOOT_PARTITION
+ endif
++ifneq ($(TW_CUSTOM_TIME_ZONE_NAME),)
++	LOCAL_CFLAGS += -DTW_CUSTOM_TIME_ZONE_NAME=$(TW_CUSTOM_TIME_ZONE_NAME)
++endif
++ifneq ($(TW_CUSTOM_TIME_ZONE_OFFSET),)
++	LOCAL_CFLAGS += -DTW_CUSTOM_TIME_ZONE_OFFSET=$(TW_CUSTOM_TIME_ZONE_OFFSET)
++endif
++ifeq ($(TW_CUSTOM_TIME_ZONE_DST), true)
++    LOCAL_CFLAGS += -DTW_CUSTOM_TIME_ZONE_DST
++endif
+ ifeq ($(TW_REVERSED_NAVBAR_LAYOUT), true)
+     LOCAL_CFLAGS += -DTW_REVERSED_NAVBAR_LAYOUT
+ endif
+diff --git a/data.cpp b/data.cpp
+index 5d05d2b..a26be16 100755
+--- a/data.cpp
++++ b/data.cpp
+@@ -24,6 +24,7 @@
+ #include <cctype>
+ #include <cutils/properties.h>
+ #include <unistd.h>
++#include <algorithm>
+ 
+ #include "variables.h"
+ #include "data.hpp"
+@@ -751,7 +752,21 @@ void DataManager::SetDefaultValues()
+ 	mPersist.SetValue(TW_DISABLE_FREE_SPACE_VAR, "0");
+ 	mPersist.SetValue(TW_FORCE_DIGEST_CHECK_VAR, "0");
+ 	mPersist.SetValue(TW_USE_COMPRESSION_VAR, "0");
++#ifdef TW_CUSTOM_TIME_ZONE_NAME
++	string strName = EXPAND(TW_CUSTOM_TIME_ZONE_NAME);
++#ifdef TW_CUSTOM_TIME_ZONE_DST
++	strName.erase(std::remove(strName.begin(), strName.end(), ';'), strName.end());
++	mPersist.SetValue(TW_TIME_ZONE_VAR, strName);
++#else
++	size_t index = strName.find(";");
++	if (index != std::string::npos)
++		mPersist.SetValue(TW_TIME_ZONE_VAR, strName.substr(0, index));
++	else
++		mPersist.SetValue(TW_TIME_ZONE_VAR, strName);
++#endif
++#else
+ 	mPersist.SetValue(TW_TIME_ZONE_VAR, "CST6CDT,M3.2.0,M11.1.0");
++#endif
+ 	mPersist.SetValue(TW_GUI_SORT_ORDER, "1");
+ 	mPersist.SetValue(TW_RM_RF_VAR, "0");
+ 	mPersist.SetValue(TW_SKIP_DIGEST_CHECK_VAR, "0");
+@@ -760,9 +775,21 @@ void DataManager::SetDefaultValues()
+ 	mPersist.SetValue(TW_SDEXT_SIZE, "0");
+ 	mPersist.SetValue(TW_SWAP_SIZE, "0");
+ 	mPersist.SetValue(TW_SDPART_FILE_SYSTEM, "ext3");
++#ifdef TW_CUSTOM_TIME_ZONE_NAME
++	mPersist.SetValue(TW_TIME_ZONE_GUISEL, EXPAND(TW_CUSTOM_TIME_ZONE_NAME));
++#else
+ 	mPersist.SetValue(TW_TIME_ZONE_GUISEL, "CST6;CDT,M3.2.0,M11.1.0");
++#endif
++#ifdef TW_CUSTOM_TIME_ZONE_OFFSET
++	mPersist.SetValue(TW_TIME_ZONE_GUIOFFSET, EXPAND(TW_CUSTOM_TIME_ZONE_OFFSET));
++#else
+ 	mPersist.SetValue(TW_TIME_ZONE_GUIOFFSET, "0");
++#endif
++#ifdef TW_CUSTOM_TIME_ZONE_DST
+ 	mPersist.SetValue(TW_TIME_ZONE_GUIDST, "1");
++#else
++	mPersist.SetValue(TW_TIME_ZONE_GUIDST, "0");
++#endif
+ 	mPersist.SetValue(TW_AUTO_REFLASHTWRP_VAR, "0");
+ #ifdef TW_NO_FLASH_CURRENT_TWRP
+ 	mConst.SetValue("tw_no_flash_current_twrp", "1");
