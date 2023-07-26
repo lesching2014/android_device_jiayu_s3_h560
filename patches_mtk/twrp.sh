@@ -30,6 +30,8 @@ elif [[ "$VERSION" == "3.7.0_11" ]]; then
     cp -fr bootable/recovery-twrp/twrp-11/* bootable/recovery-twrp
 elif [[ "$VERSION" == "3.7.0_12" ]]; then
     cp -fr bootable/recovery-twrp/twrp-12.1/* bootable/recovery-twrp
+elif [[ "$VERSION" == "3.6.2_12" ]]; then
+    cp -fr bootable/recovery-twrp/twrp-13/* bootable/recovery-twrp
 else
     echo "$VERSION"
 fi
