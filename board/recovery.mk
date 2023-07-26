@@ -16,15 +16,11 @@
 
 # Recovery
 RECOVERY_VARIANT := twrp
-BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_NO_SECURE_DISCARD := true # secure discard is painfully slow...
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
 
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
-BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
-#BOARD_SUPPRESS_SECURE_ERASE := true
-
 DEVICE_RESOLUTION := 1080x1920
 DEVICE_SCREEN_WIDTH := 1080
 DEVICE_SCREEN_HEIGHT := 1920
@@ -61,33 +57,26 @@ TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
-TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight
+TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
-#TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
 
 # Time Zone data for Recovery
 #PRODUCT_COPY_FILES += \
 #    system/timezone/output_data/iana/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
 # Misc
-#TW_FLASH_FROM_STORAGE := true
-#TW_NEW_ION_HEAP := true
-#TW_HAVE_SELINUX := true
-#TW_EXCLUDE_SUPERSU := true
-#TW_EXTRA_LANGUAGES := true
-TW_DEFAULT_LANGUAGE := en
-##TW_IGNORE_MAJOR_AXIS_0 := true
-##BOARD_HAS_NO_MISC_PARTITION := true
+TW_EXCLUDE_SUPERSU := true
+TW_EXTRA_LANGUAGES := true
+#TW_DEFAULT_LANGUAGE := en
 TW_INCLUDE_NTFS_3G := true
-TW_INCLUDE_FUSE_EXFAT := true
+#TW_INCLUDE_FUSE_EXFAT := true
 TWRP_INCLUDE_LOGCAT := true
 TW_INCLUDE_FB2PNG := true
-TARGET_USES_EXFAT := true
-TARGET_USES_NTFS := true
 else
-# CWM
+TARGET_USES_EXFAT := true
+#TARGET_USES_NTFS := true
 BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
 #BOARD_USES_MMCUTILS := true
