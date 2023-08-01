@@ -21,7 +21,7 @@ PRODUCT_PACKAGES += \
     libnl_2 \
     libion \
     power.default \
-    power.$(platform)
+    power.mt6752
     
 # Charger
 PRODUCT_PACKAGES += \
