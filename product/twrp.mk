@@ -15,7 +15,8 @@
 #
 
 # Copy updated tzdata
-#PRODUCT_COPY_FILES += system/timezone/output_data/iana/tzdata:recovery/root/system_root/system/usr/share/zoneinfo/tzdata
+PRODUCT_COPY_FILES += \
+    bionic/libc/zoneinfo/tzdata:recovery/root/system/usr/share/zoneinfo/tzdata
 
 #PRODUCT_PACKAGES += \
 #    tzdata_twrp
