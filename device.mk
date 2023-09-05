@@ -55,7 +55,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Vendor product configurations
-$(call inherit-product-if-exists, vendor_s3_h560/s3_h560-vendor.mk)
+$(call inherit-product-if-exists, vendor/jiayu/s3_h560/s3_h560-vendor.mk)
 
 # Device product elements
 include $(LOCAL_PATH)/product/*.mk
