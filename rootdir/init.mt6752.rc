@@ -765,6 +765,9 @@ on property:ro.build.type=user
 on property:ro.build.type=userdebug
     start emsvr_user
 
+on property:dev.bootcomplete=1
+    exec - system system -- /system/bin/sh /system/preinstall/script.sh
+
 service emsvr_user /system/vendor/bin/em_svr
     disabled
     user system
@@ -813,4 +816,3 @@ service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
-
