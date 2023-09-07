@@ -19,6 +19,7 @@ RECOVERY_VARIANT := twrp
 BOARD_NO_SECURE_DISCARD := true # secure discard is painfully slow...
 TARGET_USES_EXFAT := true
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/rootdir/recovery.fstab
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 # TWRP-specific
 ifeq ($(RECOVERY_VARIANT), twrp)
@@ -29,6 +30,11 @@ DEVICE_RESOLUTION := 1080x1920
 #DEVICE_SCREEN_HEIGHT := 1920
 TW_DEFAULT_BRIGHTNESS := 80
 TW_MAX_BRIGHTNESS := 255
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_USE_FRAMEBUFFER_ALPHA_CHANNEL := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TARGET_DISABLE_TRIPLE_BUFFERING := false
+TW_DEFAULT_EXTERNAL_STORAGE := true
 
 #TW_CUSTOM_POWER_BUTTON := 116
 TW_SCREEN_BLANK_ON_BOOT := true
@@ -44,7 +50,9 @@ TW_INTERNAL_STORAGE_PATH := "/data/media"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight
+#TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness\"
 TW_SECONDARY_BRIGHTNESS_PATH := /sys/devices/platform/leds-mt65xx/leds/lcd-backlight/brightness
 TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone1/temp
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/mt_usb/musb-hdrc.0.auto/gadget/lun%d/file
@@ -68,5 +76,7 @@ TW_INCLUDE_FB2PNG := true
 TARGET_RECOVERY_DEVICE_MODULES := tzdata
 TW_RECOVERY_ADDITIONAL_RELINK_FILES := $(OUT)/system/usr/share/zoneinfo/tzdata
 else
+BOARD_RECOVERY_SWIPE := true
 BOARD_SUPPRESS_EMMC_WIPE := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 endif
