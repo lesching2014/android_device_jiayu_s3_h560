@@ -17,3 +17,4 @@
 # Camera
 BOARD_HAS_LP_CAM := true
 USE_CAMERA_STUB := true
+TARGET_HAS_LEGACY_LP_CAM := true
