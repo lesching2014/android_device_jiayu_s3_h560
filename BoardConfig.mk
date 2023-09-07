@@ -86,7 +86,7 @@ TARGET_SYSTEM_MINOR := 17
 
 # Seperate vendor
 TARGET_COPY_OUT_VENDOR := system/vendor
-TARGET_COPY_OUT_VENDOR := vendor
+#TARGET_COPY_OUT_VENDOR := vendor
 
 # Device vendor board
 ifneq ($(wildcard vendor/jiayu/s3_h560/BoardConfigVendor.mk),)
